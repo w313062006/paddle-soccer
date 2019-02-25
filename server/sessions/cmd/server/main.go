@@ -21,7 +21,7 @@ import (
 
 	"strings"
 
-	"github.com/markmandel/paddle-soccer/server/sessions"
+	"github.com/w313062006/paddle-soccer/sessions"
 )
 
 const (

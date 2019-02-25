@@ -23,7 +23,7 @@
 #     \_/ \__,_|_|  |_|\__,_|_.__/|_|\___|___/
 #
 
-PACKAGE_ROOT=github.com/markmandel/paddle-soccer/server
+PACKAGE_ROOT=github.com/w313062006/paddle-soccer/server
 
 #   _____                    _
 #  |_   _|_ _ _ __ __ _  ___| |_ ___

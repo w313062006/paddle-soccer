@@ -24,7 +24,7 @@
 #
 
 PROJECT?=$(shell gcloud config list project | awk 'FNR ==2 { print $$3 }')
-TAG=gcr.io/$(PROJECT)/sessions
+TAG=ai-1080ti-06.danlu.com:8443/danlu-dev/wushuang3/unity-docker-sessions:v1.0
 PACKAGE=$(PACKAGE_ROOT)/sessions
 SERVER?=localhost:8080
 

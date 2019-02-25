@@ -68,7 +68,7 @@ func (s *Server) externalNodeIPofPod(sess Session, m map[string]string) (string,
 // createSessionPod creates a pod containing the game server, for a game session
 func (s *Server) createSessionPod() (string, error) {
 	log.Print("[Info][create] Creating new game session")
-	namespace := "default"
+	namespace := "ws-test"
 
 	labels := map[string]string{
 		"sessions": "game",
@@ -84,7 +84,6 @@ func (s *Server) createSessionPod() (string, error) {
 		Spec: v1.PodSpec{
 			HostNetwork:   true,
 			RestartPolicy: v1.RestartPolicyNever,
-			NodeSelector:  s.gameNodeSelector,
 			Containers: []v1.Container{
 				{
 					Name:            "sessions-game",
@@ -105,18 +104,6 @@ func (s *Server) createSessionPod() (string, error) {
 			},
 			// Make it so that each game server is as close to each other as they can be
 			// This lowers fragmentation, and makes it easier to scale down
-			Affinity: &v1.Affinity{
-				PodAffinity: &v1.PodAffinity{
-					PreferredDuringSchedulingIgnoredDuringExecution: []v1.WeightedPodAffinityTerm{
-						{
-							Weight: 1, PodAffinityTerm: v1.PodAffinityTerm{
-								LabelSelector: &metav1.LabelSelector{MatchLabels: labels},
-								TopologyKey:   metav1.LabelHostname,
-							},
-						},
-					},
-				},
-			},
 		},
 	}
 
